@@ -105,3 +105,7 @@ By incorporating these universal design principles and understanding the common 
 - Updated the CSS to set the header as `position: fixed` so it remains visible at the top while scrolling.
 - Added padding to the `body` to prevent content from being hidden under the fixed header.
 - Ensured the `shop` section has proper spacing for a better user experience.
+
+### Improved Spacing in `shop.html`
+- Increased the top padding of the `.shop` section in `style.css` to 60px.
+- This change ensures that the text in the shop section has more space from the header, making it look less cramped.
