@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Butikk - Bakkedora</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h2>Bakkedora</h2>
+        {% if first_name %}
+            <span class="user-name">{{ first_name }}</span>
+            <a href="{{ url_for('logout') }}" class="cta-button login-button">Logg ut</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="cta-button login-button" id="loginButton">Logg inn</a>
+        {% endif %}
+    </header>
+
+    <section class="shop">
+        <h1>Våre produkter</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="product-list">
+            {% for product in products %}
+                <div class="product-item">
+                    <h3>{{ product.name }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p class="price">{{ product.price }} kr</p>
+                    <form method="POST" action="{{ url_for('shop') }}">
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <input type="number" name="quantity" value="1" min="1" class="quantity-input">
+                        <button type="submit" class="cta-button">Legg til i kurv</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('cart') }}" class="cta-button">Se handlekurv</a>
+        <a href="{{ url_for('home') }}" class="cta-button">Tilbake til forsiden</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Bakkedora. All rights reserved.</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

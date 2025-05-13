@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logg inn - Bakkedora</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h2>Bakkedora</h2>
+    </header>
+
+    <section class="hero">
+        <h1>Logg inn</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p style="color: { 'green' if category == 'success' else 'red' }">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="{{ url_for('login') }}">
+            <p>
+                <label for="email">E-post:</label><br>
+                <input type="email" id="email" name="email" required>
+            </p>
+            <p>
+                <label for="password">Passord:</label><br>
+                <input type="password" id="password" name="password" required>
+            </p>
+            <button type="submit" class="cta-button">Logg inn</button>
+        </form>
+        <p>Har du ikke konto? <a href="{{ url_for('register') }}">Registrer deg her</a></p>
+        <a href="{{ url_for('home') }}" class="cta-button">Tilbake til forsiden</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Bakkedora. All rights reserved.</p>
+    </footer>
+</body>
+</html>

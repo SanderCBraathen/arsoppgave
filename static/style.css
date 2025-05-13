@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #f4f4f4;
+    padding-top: 80px; /* Add padding to prevent content from being hidden under the fixed header */
+}
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Make the header fixed */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+.hero, .shop {
+    padding: 40px;
+    background-color: #fff;
+}
+.hero h1, .shop h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+.hero p {
+    font-size: 1.2em;
+    color: #666;
+}
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+}
+.cta-button:hover {
+    background-color: #0056b3;
+}
+.login-button {
+    margin-top: 0;
+    padding: 10px 20px;
+}
+.user-name {
+    color: white;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+.product-list, .cart-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+.product-item, .cart-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    width: 200px;
+    text-align: center;
+}
+.product-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; /* Set a fixed height for consistency */
+}
+.product-item h3, .cart-item h3 {
+    margin: 0 0 10px;
+    font-size: 1.3em;
+}
+.product-item h3 {
+    margin-bottom: 10px;
+}
+.product-item p, .cart-item p {
+    margin: 5px 0;
+    color: #666;
+}
+.product-item p {
+    flex-grow: 1; /* Allow description to take up available space */
+    margin-bottom: 10px;
+}
+.product-item form {
+    margin-top: auto; /* Push the form (Buy button) to the bottom */
+}
+.price {
+    font-weight: bold;
+    color: #007BFF;
+}
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.total {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 20px 0;
+}
+footer {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+form {
+    margin: 20px 0;
+}
+form p {
+    margin: 10px 0;
+}
+input[type="text"], input[type="password"] {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+}
+button.cta-button {
+    border: none;
+    cursor: pointer;
+}
+.shop {
+    padding-top: 20px; /* Additional padding for better spacing */
+}

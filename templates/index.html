@@ -1,0 +1,24 @@
+<body>
+    <header>
+        <h2>Bakkedora</h2>
+        {% if first_name %}
+            <span class="user-name">{{ first_name }}</span>
+            <a href="{{ url_for('logout') }}" class="cta-button login-button">Logg ut</a>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="cta-button login-button" id="loginButton">Logg inn</a>
+        {% endif %}
+    </header>
+
+    <section class="hero">
+        <h1>Billig drikke rett til skolen</h1>
+        <p>Se prisene :D</p>
+        <a href="{{ url_for('shop') }}" class="cta-button" id="shopButton">Handle</a>
+    </section>
+
+    <footer>
+        <p>© 2025 Bakkedora. All rights reserved.</p>
+    </footer>
+</body>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
