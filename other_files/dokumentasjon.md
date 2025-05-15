@@ -72,6 +72,7 @@ Braathen Retail is a simple web application for an online store that allows user
 ## Changelog
 
 - **[2025-05-15]**: Changed the "Braathen Retail" header link style so it no longer appears blue or underlined, making it look like normal text while keeping navigation functionality.
+- **[2025-05-15]**: Updated the "Braathen Retail" header link so the cursor shows as a pointer (clickable) when hovered.
 
 ---
 

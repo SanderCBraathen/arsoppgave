@@ -142,7 +142,7 @@ button.cta-button {
 .title-link {
     color: inherit;
     text-decoration: none;
-    cursor: default;
+    cursor: pointer;
 }
 .title-link h2 {
     margin: 0;
