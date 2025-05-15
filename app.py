@@ -1,21 +1,32 @@
-import sqlite3
 import hashlib
+import mariadb
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Required for flash messages and sessions
 
+# Database connection
+def get_db():
+    return mariadb.connect(
+        user="sander",
+        password="2603",
+        host="10.2.2.75",
+        port=3306,
+        database="braathen_retail"
+    )
+
 # Database initialization
 def init_db():
-    conn = sqlite3.connect('users.db')
+    conn = get_db()
     c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS users 
-                 (id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                  username TEXT UNIQUE NOT NULL, 
-                  first_name TEXT NOT NULL, 
-                  last_name TEXT NOT NULL, 
-                  email TEXT UNIQUE NOT NULL, 
-                  password_hash TEXT NOT NULL)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(255) UNIQUE NOT NULL,
+        first_name VARCHAR(255) NOT NULL,
+        last_name VARCHAR(255) NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password_hash VARCHAR(255) NOT NULL
+    )''')
     conn.commit()
     conn.close()
 
@@ -30,7 +41,7 @@ init_db()
 def home():
     first_name = None
     if 'email' in session:
-        conn = sqlite3.connect('users.db')
+        conn = get_db()
         c = conn.cursor()
         c.execute("SELECT first_name FROM users WHERE email = ?", (session['email'],))
         user = c.fetchone()
@@ -46,7 +57,7 @@ def login():
         password = request.form['password']
         password_hash = hash_password(password)
 
-        conn = sqlite3.connect('users.db')
+        conn = get_db()
         c = conn.cursor()
         c.execute("SELECT * FROM users WHERE email = ?", (email,))
         user = c.fetchone()
@@ -81,7 +92,7 @@ def register():
             flash('Alle felter må fylles ut!', 'error')
             return render_template('register.html')
 
-        conn = sqlite3.connect('users.db')
+        conn = get_db()
         c = conn.cursor()
         c.execute("SELECT * FROM users WHERE email = ?", (email,))
         if c.fetchone():
@@ -90,13 +101,15 @@ def register():
             return render_template('register.html')
 
         try:
-            c.execute("INSERT INTO users (username, first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?, ?)", 
-                      (username, first_name, last_name, email, password_hash))
+            c.execute(
+                "INSERT INTO users (username, first_name, last_name, email, password_hash) VALUES (?, ?, ?, ?, ?)",
+                (username, first_name, last_name, email, password_hash)
+            )
             conn.commit()
             flash('Konto opprettet! Logg inn nå.', 'success')
             conn.close()
             return redirect(url_for('login'))
-        except sqlite3.IntegrityError:
+        except mariadb.IntegrityError:
             flash('Brukernavn eller e-post er allerede i bruk!', 'error')
 
         conn.close()
@@ -118,7 +131,7 @@ def shop():
     ]
     first_name = None
     if 'email' in session:
-        conn = sqlite3.connect('users.db')
+        conn = get_db()
         c = conn.cursor()
         c.execute("SELECT first_name FROM users WHERE email = ?", (session['email'],))
         user = c.fetchone()
@@ -154,7 +167,7 @@ def shop():
 def cart():
     first_name = None
     if 'email' in session:
-        conn = sqlite3.connect('users.db')
+        conn = get_db()
         c = conn.cursor()
         c.execute("SELECT first_name FROM users WHERE email = ?", (session['email'],))
         user = c.fetchone()
