@@ -167,4 +167,4 @@ def cart():
     return render_template('cart.html', cart_items=cart_items, total=total, first_name=first_name)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=4444)
+    app.run(debug=True, host='0.0.0.0', port=5000)
