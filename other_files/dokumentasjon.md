@@ -77,8 +77,7 @@ Braathen Retail is a simple web application for an online store that allows user
 - **[2025-05-15]**: Improved the login/logout button style and spacing in the header for all pages for a more consistent and modern look.
 - **[2025-05-15]**: Fixed header and login/logout button clipping issue by updating header layout and adding responsive styles.
 - **[2025-05-15]**: Changed the login/logout button to display the logged-in user's name instead of "Logg ut" when logged in, on all pages.
-- **[2025-05-15]**: Added a dropdown menu to the username button in the header. Clicking the username now shows a "Logg ut" option to prevent accidental logouts.
-- **[2025-05-15]**: Fixed and improved the dropdown on the login button (username) so it opens and closes correctly and is styled/positioned properly.
+- **[2025-05-15]**: Removed dropdown from login/logout button. Now the button simply shows the user's name and logs out directly when clicked.
 
 ---
 

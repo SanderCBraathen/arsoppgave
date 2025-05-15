@@ -3,17 +3,11 @@
     <title>Braathen Retail</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
     <header>
         <a href="{{ url_for('home') }}" class="title-link"><h2>Braathen Retail</h2></a>
         {% if first_name %}
-            <div class="user-dropdown" id="userDropdown">
-                <button class="cta-button login-button" id="userDropdownBtn">{{ first_name }}</button>
-                <div class="dropdown-content" id="dropdownContent">
-                    <a href="{{ url_for('logout') }}">Logg ut</a>
-                </div>
-            </div>
+            <a href="{{ url_for('logout') }}" class="cta-button login-button">{{ first_name }}</a>
         {% else %}
             <a href="{{ url_for('login') }}" class="cta-button login-button" id="loginButton">Logg inn</a>
         {% endif %}
@@ -28,22 +22,5 @@
     <footer>
         <p>© 2025 Braathen Retail. All rights reserved.</p>
     </footer>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const btn = document.getElementById('userDropdownBtn');
-        const dropdown = btn?.parentElement;
-
-        if (btn && dropdown) {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                dropdown.classList.toggle('show');
-            });
-
-            document.addEventListener('click', function() {
-                dropdown.classList.remove('show');
-            });
-        }
-    });
-    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
