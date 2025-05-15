@@ -3,6 +3,7 @@
     <title>Braathen Retail</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <header>
         <a href="{{ url_for('home') }}" class="title-link"><h2>Braathen Retail</h2></a>
@@ -27,4 +28,22 @@
     <footer>
         <p>© 2025 Braathen Retail. All rights reserved.</p>
     </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const btn = document.getElementById('userDropdownBtn');
+        const dropdown = btn?.parentElement;
+
+        if (btn && dropdown) {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                dropdown.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function() {
+                dropdown.classList.remove('show');
+            });
+        }
+    });
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
