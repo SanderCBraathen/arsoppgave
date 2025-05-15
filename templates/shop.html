@@ -9,9 +9,9 @@
 
 <body>
     <header>
-        <h2>Bakkedora</h2>
+        <a href="{{ url_for('home') }}" class="title-link"><h2>Braathen Retail</h2></a>
         {% if first_name %}
-            <div class="user-dropdown">
+            <div class="user-dropdown" id="userDropdown">
                 <button class="cta-button login-button" id="userDropdownBtn">{{ first_name }}</button>
                 <div class="dropdown-content" id="dropdownContent">
                     <a href="{{ url_for('logout') }}">Logg ut</a>
