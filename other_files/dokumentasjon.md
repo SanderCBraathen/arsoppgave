@@ -69,6 +69,10 @@ Braathen Retail is a simple web application for an online store that allows user
 - **Trust and Security:** User data stored securely, feedback on actions.
 - **Call-to-Action Buttons:** Prominent buttons for main actions.
 
+## Changelog
+
+- **[2025-05-15]**: Changed the "Braathen Retail" header link style so it no longer appears blue or underlined, making it look like normal text while keeping navigation functionality.
+
 ---
 
 By following these principles and providing the above features, Braathen Retail offers a simple and user-friendly online shopping experience.
