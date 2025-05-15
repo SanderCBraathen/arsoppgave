@@ -10,7 +10,12 @@
     <header>
         <h2>Bakkedora</h2>
         {% if first_name %}
-            <a href="{{ url_for('logout') }}" class="cta-button login-button">{{ first_name }}</a>
+            <div class="user-dropdown">
+                <button class="cta-button login-button" id="userDropdownBtn">{{ first_name }}</button>
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="{{ url_for('logout') }}">Logg ut</a>
+                </div>
+            </div>
         {% else %}
             <a href="{{ url_for('login') }}" class="cta-button login-button" id="loginButton">Logg inn</a>
         {% endif %}

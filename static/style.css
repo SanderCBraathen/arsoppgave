@@ -196,6 +196,39 @@ header h2, .title-link {
     background: #0056b3;
 }
 
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.user-dropdown .dropdown-content a {
+    color: #333;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+}
+
+.user-dropdown .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.user-dropdown.show .dropdown-content {
+    display: block;
+}
+
 @media (max-width: 600px) {
     header {
         flex-direction: column;
