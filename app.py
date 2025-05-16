@@ -1,5 +1,5 @@
 import hashlib
-import mysql.connector
+import mariadb
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 
 app = Flask(__name__)
